@@ -39,3 +39,18 @@ export const CTA = {
   label: "Vê os jogadores que precisas de comprar aqui",
   url: "https://www.fut.gg/fut-gallery/",
 };
+
+/*
+ * Social links. `copy` instead of `url` shows a button that copies the text
+ * (used for Discord, which is a username, not a link).
+ * featured: true → also shown as a big button under the title.
+ */
+export const SOCIALS = [
+  { id: "kick", name: "Kick", handle: "pedrosousa162", url: "https://kick.com/pedrosousa162", featured: true },
+  { id: "twitch", name: "Twitch", handle: "pedrosousa162", url: "https://www.twitch.tv/pedrosousa162" },
+  { id: "instagram", name: "Instagram", handle: "@pedrosousa_79", url: "https://www.instagram.com/pedrosousa_79" },
+  { id: "tiktok", name: "TikTok", handle: "@pedrosousa_79", url: "https://www.tiktok.com/@pedrosousa_79" },
+  { id: "tiktok", name: "TikTok Clipes", handle: "@pedrosousa162clipes", url: "https://www.tiktok.com/@pedrosousa162clipes" },
+  { id: "youtube", name: "YouTube", handle: "@ClipesPedrosousa162", url: "https://www.youtube.com/@ClipesPedrosousa162" },
+  { id: "discord", name: "Discord", handle: "Pedrosousa162", copy: "Pedrosousa162" },
+];

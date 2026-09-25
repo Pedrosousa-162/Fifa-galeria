@@ -803,3 +803,188 @@ button {
   letter-spacing: 0.08em;
   color: var(--cyan);
 }
+
+/* ───────────────────────── Hero buttons ───────────────────────── */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: clamp(20px, 3.5vh, 32px);
+}
+.hero__actions .cta {
+  margin: 0;
+}
+.cta--kick {
+  border-color: rgba(83, 252, 25, 0.55);
+  background: linear-gradient(180deg, rgba(83, 252, 25, 0.16), rgba(83, 252, 25, 0.05));
+  box-shadow: 0 0 24px -8px rgba(83, 252, 25, 0.5);
+}
+.cta--kick svg {
+  color: #53fc19;
+}
+.cta--kick:hover {
+  background: linear-gradient(180deg, rgba(83, 252, 25, 0.26), rgba(83, 252, 25, 0.08));
+  box-shadow: 0 0 32px -6px rgba(83, 252, 25, 0.7);
+}
+.cta--kick:hover svg {
+  transform: none;
+}
+
+/* ───────────────────────── Top bar socials ───────────────────────── */
+.nav {
+  margin-left: auto;
+}
+.socialbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+}
+.socialbar__link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.socialbar__link:hover {
+  color: var(--cyan);
+  background: var(--cyan-soft);
+}
+.socialbar__toast {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--c-2);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--white);
+}
+@media (max-width: 960px) {
+  .socialbar {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .nav a {
+    padding: 10px 8px;
+    letter-spacing: 0.1em;
+  }
+  .nav a::after {
+    left: 8px;
+    right: 8px;
+  }
+}
+
+/* ───────────────────────── "Segue-me" section ───────────────────────── */
+.socials {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(48px, 8vh, 88px);
+}
+.socials__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 24px);
+  margin-bottom: clamp(20px, 3vh, 32px);
+}
+.socials__head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  letter-spacing: 0.3em;
+  padding-left: 0.3em;
+  line-height: 1;
+  color: var(--cyan);
+}
+.socials__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.social {
+  --brand: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(18, 34, 54, 0.7), rgba(11, 20, 32, 0.85));
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.social--kick { --brand: #53fc19; }
+.social--twitch { --brand: #9146ff; }
+.social--instagram { --brand: #ff3d7f; }
+.social--tiktok { --brand: #25f4ee; }
+.social--youtube { --brand: #ff3333; }
+.social--discord { --brand: #7289ff; }
+
+.social:hover {
+  border-color: color-mix(in srgb, var(--brand) 60%, transparent);
+  box-shadow: 0 0 24px -8px var(--brand);
+  transform: translateY(-2px);
+}
+.social__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  color: var(--brand);
+}
+.social__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.social__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.social__handle {
+  font-size: 0.85rem;
+  color: var(--gray);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.social__action {
+  margin-left: auto;
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-dim);
+}
+.social:hover .social__action {
+  color: var(--brand);
+}
