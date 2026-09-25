@@ -512,10 +512,10 @@ button {
   inset: 0;
   z-index: 100;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   background:
     radial-gradient(60% 50% at 50% 45%, rgba(18, 34, 54, 0.6), transparent 75%),
-    rgba(3, 5, 9, 0.96);
+    #03050a;
   animation: lb-in 0.18s ease-out;
   touch-action: pan-y;
 }
@@ -640,10 +640,81 @@ button {
   right: clamp(12px, 2vw, 32px);
 }
 
+/* Extra images strip under the open photo */
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 12px var(--gutter) max(14px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+}
+.strip__label {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray-dim);
+}
+.strip__label b {
+  color: var(--cyan);
+  font-weight: 700;
+}
+.strip__row {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 4px;
+  scrollbar-width: thin;
+}
+.strip__thumb {
+  flex: none;
+  height: 72px;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(5, 8, 13, 0.7);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.strip__thumb:hover {
+  opacity: 1;
+}
+.strip__thumb.is-active {
+  opacity: 1;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan), 0 0 16px -4px var(--cyan);
+}
+.strip__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Phones: arrows move to a bottom row so they never cover the image */
 @media (max-width: 700px) {
+  .lightbox {
+    padding-bottom: 84px;
+  }
   .lightbox__stage {
-    padding: 12px 12px 92px;
+    padding: 12px;
+  }
+  .strip {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px 4px;
+  }
+  .strip__thumb {
+    height: 52px;
   }
   .lb-btn--nav {
     top: auto;
@@ -714,4 +785,21 @@ button {
     letter-spacing: 0.04em;
     text-align: left;
   }
+}
+
+/* "+N" badge on cards that have extra images */
+.card__more {
+  margin-left: auto;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
 }

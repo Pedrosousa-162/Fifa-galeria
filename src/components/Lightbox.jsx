@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { pad } from "../utils.js";
 import SmartImage from "./SmartImage.jsx";
 import Placeholder from "./Placeholder.jsx";
@@ -21,6 +21,11 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
   const number = pad(index + 1);
   const closeRef = useRef(null);
   const touchX = useRef(null);
+
+  // Which image is shown: 0 = the photo itself, n = its nth extra. Resets when the photo changes.
+  const views = [team.image, ...team.extras];
+  const [selected, setSelected] = useState({ index, view: 0 });
+  const view = selected.index === index ? selected.view : 0;
 
   useEffect(() => {
     const onKey = (e) => {
@@ -92,8 +97,8 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
 
       <div className="lightbox__stage" onClick={closeOnBackdrop}>
         <SmartImage
-          key={index}
-          image={team.image}
+          key={views[view]}
+          image={views[view]}
           alt={team.name}
           eager
           className="lightbox__img"
@@ -104,6 +109,28 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
           }
         />
       </div>
+
+      {team.extras.length > 0 && (
+        <div className="strip">
+          <span className="strip__label">
+            Mais imagens <b>{team.extras.length}</b>
+          </span>
+          <div className="strip__row">
+            {views.map((image, i) => (
+              <button
+                key={image}
+                type="button"
+                className={`strip__thumb${i === view ? " is-active" : ""}`}
+                onClick={() => setSelected({ index, view: i })}
+                aria-label={i === 0 ? "Foto principal" : `Imagem extra ${i}`}
+                aria-current={i === view}
+              >
+                <SmartImage image={image} alt="" eager thumb className="strip__img" />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <button
         type="button"

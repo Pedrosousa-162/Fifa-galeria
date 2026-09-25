@@ -38,6 +38,11 @@ export default function TeamCard({ team, index, eager, onOpen }) {
         <div className="card__info">
           <h3 className="card__name">{team.name}</h3>
         </div>
+        {team.extras.length > 0 && (
+          <span className="card__more" title={`${team.extras.length} imagens extra`}>
+            +{team.extras.length}
+          </span>
+        )}
       </div>
     </li>
   );
