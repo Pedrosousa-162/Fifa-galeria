@@ -121,13 +121,13 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
         <div className="lb-team">
           {shownTeam ? (
             <a className="cta lb-team__link" href={`${FUTGG}${shownTeam[1]}/`} target="_blank" rel="noopener noreferrer">
-              Vê os jogadores do {shownTeam[0]} aqui
+              Vê os jogadores {shownTeam[2] ?? "do"} {shownTeam[0]} aqui
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                 <path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           ) : (
-            <span className="lb-team__hint">Escolhe uma equipa em baixo para veres os jogadores no FUT.GG</span>
+            <span className="lb-team__hint">Escolhe uma imagem em baixo para veres os jogadores no FUT.GG</span>
           )}
         </div>
       )}

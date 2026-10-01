@@ -1,7 +1,7 @@
 /*
  * Team shown in each extra screenshot, keyed by its file name (without .png).
- * [team name, fut.gg path] → button "Vê os jogadores do <team>" linking to
- * https://www.fut.gg/fut-gallery/<path>/
+ * [name, fut.gg path, word before the name (default "do")] → button
+ * "Vê os jogadores do <name> aqui" linking to https://www.fut.gg/fut-gallery/<path>/
  * Screenshots not listed here simply have no button.
  */
 export const EXTRA_TEAMS = {
@@ -56,4 +56,14 @@ export const EXTRA_TEAMS = {
   "12-1": ["Bergamo Calcio", "serie-a/bergamo-calcio"],
   "12-2": ["Frosinone", "serie-a/frosinone"],
   "12-3": ["Lecce", "serie-a/lecce"],
+  // Foto 13 — whole leagues
+  "13-1": ["Premier League", "leagues/premier-league", "da"],
+  "13-2": ["Barclays WSL", "leagues/barclays-wsl", "da"],
+  "13-3": ["Ligue 1 McDonald's", "leagues/ligue-1-mcdonald-s", "da"],
+  "13-4": ["Arkema PL", "leagues/arkema-pl", "da"],
+  "13-5": ["LALIGA EA SPORTS", "leagues/laliga-ea-sports", "da"],
+  "13-6": ["Liga F Moeve", "leagues/liga-f-moeve", "da"],
+  "13-7": ["Serie A Enilive", "leagues/serie-a-enilive", "da"],
+  "13-8": ["Bundesliga", "leagues/bundesliga", "da"],
+  "13-9": ["Frauen-Bundesliga", "leagues/frauen-bundesliga", "da"],
 };
