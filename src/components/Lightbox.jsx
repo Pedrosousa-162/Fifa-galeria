@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { pad } from "../utils.js";
 import SmartImage from "./SmartImage.jsx";
 import Placeholder from "./Placeholder.jsx";
+import { EXTRA_TEAMS } from "../extraTeams.js";
+
+const FUTGG = "https://www.fut.gg/fut-gallery/";
+// "extras/2/2-1.png" → ["Birmingham City", "premier-league/birmingham-city"] or undefined
+const teamOf = (image) => EXTRA_TEAMS[image.split("/").pop().replace(/\.[^.]+$/, "")];
 
 const Arrow = ({ dir }) => (
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
@@ -26,6 +31,8 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
   const views = [team.image, ...team.extras];
   const [selected, setSelected] = useState({ index, view: 0 });
   const view = selected.index === index ? selected.view : 0;
+  const shownTeam = view > 0 ? teamOf(views[view]) : undefined;
+  const hasTeams = team.extras.some(teamOf);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -110,6 +117,21 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
         />
       </div>
 
+      {hasTeams && (
+        <div className="lb-team">
+          {shownTeam ? (
+            <a className="cta lb-team__link" href={`${FUTGG}${shownTeam[1]}/`} target="_blank" rel="noopener noreferrer">
+              Vê os jogadores do {shownTeam[0]} aqui
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          ) : (
+            <span className="lb-team__hint">Escolhe uma equipa em baixo para veres os jogadores no FUT.GG</span>
+          )}
+        </div>
+      )}
+
       {team.extras.length > 0 && (
         <div className="strip">
           <span className="strip__label">
@@ -122,7 +144,8 @@ export default function Lightbox({ teams, index, onClose, onStep }) {
                 type="button"
                 className={`strip__thumb${i === view ? " is-active" : ""}`}
                 onClick={() => setSelected({ index, view: i })}
-                aria-label={i === 0 ? "Foto principal" : `Imagem extra ${i}`}
+                aria-label={i === 0 ? "Foto principal" : teamOf(image)?.[0] ?? `Imagem extra ${i}`}
+                title={i === 0 ? "Foto principal" : teamOf(image)?.[0]}
                 aria-current={i === view}
               >
                 <SmartImage image={image} alt="" eager thumb className="strip__img" />

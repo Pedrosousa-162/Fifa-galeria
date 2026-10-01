@@ -512,7 +512,7 @@ button {
   inset: 0;
   z-index: 100;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
   background:
     radial-gradient(60% 50% at 50% 45%, rgba(18, 34, 54, 0.6), transparent 75%),
     #03050a;
@@ -987,4 +987,42 @@ button {
 }
 .social:hover .social__action {
   color: var(--brand);
+}
+
+/* fut.gg link for the team in the selected extra screenshot */
+.lb-team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+  padding: 4px var(--gutter) 10px;
+}
+.lb-team .cta {
+  margin: 0;
+  padding: 11px 22px;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+}
+.lb-team__hint {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gray-dim);
+}
+@media (max-width: 700px) {
+  .lb-team {
+    min-height: 56px;
+    padding: 4px 12px 6px;
+  }
+  .lb-team .cta {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+  .lb-team__hint {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
 }
