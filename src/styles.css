@@ -1026,3 +1026,33 @@ button {
     letter-spacing: 0.08em;
   }
 }
+
+/* "by Pedrosousa162" credit */
+.hero__by {
+  display: inline-block;
+  margin-top: clamp(8px, 1.4vh, 14px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gray-dim);
+  transition: color 0.2s;
+}
+.hero__by span {
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  transition: color 0.2s;
+}
+.hero__by:hover span {
+  color: var(--cyan);
+}
+.footer__by {
+  color: var(--gray);
+  transition: color 0.2s;
+}
+.footer__by:hover {
+  color: var(--cyan);
+}

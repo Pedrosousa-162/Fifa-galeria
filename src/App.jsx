@@ -6,6 +6,8 @@ import { pad } from "./utils.js";
 import TeamCard from "./components/TeamCard.jsx";
 import Lightbox from "./components/Lightbox.jsx";
 
+const KICK_URL = SOCIALS.find((s) => s.id === "kick")?.url;
+
 // Each photo's extras live in public/images/extras/<image name>/
 const TEAMS = PHOTOS.map((photo) => ({
   ...photo,
@@ -49,6 +51,9 @@ export default function App() {
         <h1 className="hero__title">
           <span className="sr-only">EA SPORTS </span>FC 27
         </h1>
+        <a className="hero__by" href={KICK_URL} target="_blank" rel="noopener noreferrer">
+          by <span>Pedrosousa162</span>
+        </a>
         <div className="hero__sub">
           <span className="hero__rule" aria-hidden="true" />
           <h2>FOTOS</h2>
@@ -85,6 +90,8 @@ export default function App() {
 
       <footer className="footer">
         <span>EA SPORTS FC 27</span>
+        <span className="hero__sep" aria-hidden="true" />
+        <a className="footer__by" href={KICK_URL} target="_blank" rel="noopener noreferrer">by Pedrosousa162</a>
         <span className="hero__sep" aria-hidden="true" />
         <span>Galeria de Fotos</span>
       </footer>
